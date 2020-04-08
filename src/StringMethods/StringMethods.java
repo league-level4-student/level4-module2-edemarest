@@ -32,13 +32,20 @@ public class StringMethods {
 
 	// Given Strings s1 and s2, return the longer String
 	public static String longerString(String s1, String s2) {
-		return null;
+		if(s1.length()>s2.length()) {
+			return s1;
+		}
+			return s2;	
 	}
 
 	
 	// if String s contains the word "underscores", change all of the spaces to underscores
 	public static String formatSpaces(String s) {
-		return null;
+		String newS="";
+		if(s.contains("underscores")) {
+			s = s.replace(' ', '_');
+		}
+		return s;
 	}
 
 	
@@ -46,13 +53,47 @@ public class StringMethods {
 	// You cannot assume there are no extra spaces around the name, but you can
 	// assume there is only one space between the first and last name
 	public static String lineLeader(String s1, String s2, String s3) {
-		return null;
+		char[] s1First = {'z','z', 'z'};
+		String[] strings = {s1, s2, s3};
+
+		for(int i = 0; i<s1.length()-1; i++) {
+			if(s1.charAt(i)==' '&&s1.charAt(i-1)!=' '&&s1.charAt(i+1)!=' ') {
+				s1First[0] = s1.charAt(i+1);
+			}	
+		}
+		for(int i = 0; i<s2.length()-1; i++) {
+			if(s2.charAt(i)==' '&&s2.charAt(i-1)!=' '&&s2.charAt(i+1)!=' ') {
+				s1First[1] = s2.charAt(i+1);
+			}	
+		}
+		for(int i = 0; i<s2.length()-1; i++) {
+			if(s3.charAt(i)==' '&&s3.charAt(i-1)!=' '&&s3.charAt(i+1)!=' ') {
+				s1First[2] = s3.charAt(i+1);
+			}	
+		}
+		int lowest = s1First[0];
+		char lowestC = 'z';
+		for(int i = 0; i < 3; i++) {
+			if(lowest > s1First[i]) {
+				System.out.println("New lowest: "+s1First[i]+" Old lowest: "+lowestC);
+				lowestC = s1First[i];
+				lowest = i;
+			}
+		}
+		return strings[lowest];
 	}
 	
 	
 	// Return the sum of all numerical digits in the String
 	public static int numeralSum(String s) {
-		return 0;
+		int sum = 0;
+		for(int i = 0; i < s.length(); i++) {
+			if(s.charAt(i)>47&&s.charAt(i)<58) {
+				sum = sum+ Integer.parseInt(s.substring(i,i));
+				System.out.println(sum+"+"+ Integer.parseInt(s.substring(i,i)));
+			}
+		}
+		return sum;
 	}
 	
 	
